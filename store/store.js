@@ -9,5 +9,4 @@ export const makeStore = () => {
   })
 }
 
-// TypeScript tanımları olmadan sadece store'u export ediyoruz
 export const store = makeStore()

@@ -32,13 +32,12 @@ const productsSlice = createSlice({
       currentPage: 1,
       totalPages: 1,
       totalItems: 0,
-      itemsPerPage: 20 // API'den per_page gelmiyorsa default değer
+      itemsPerPage: 20 
     }
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // Fetch Products
       .addCase(fetchProducts.pending, (state) => {
         state.loading = true
         state.error = null
@@ -64,7 +63,6 @@ const productsSlice = createSlice({
         state.status = ''
       })
       
-      // Delete Product
       .addCase(deleteProduct.pending, (state) => {
         state.loading = true
         state.error = null
@@ -72,7 +70,6 @@ const productsSlice = createSlice({
       .addCase(deleteProduct.fulfilled, (state, action) => {
         state.loading = false
         state.items = state.items.filter(product => product.id !== action.payload)
-        // Eğer mevcut sayfada ürün kalmadıysa bir önceki sayfaya git
         if (state.items.length === 0 && state.pagination.currentPage > 1) {
           state.pagination.currentPage = state.pagination.currentPage - 1
         }
