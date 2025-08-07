@@ -46,8 +46,6 @@ export default function RootLayout({ children }) {
               </main>
             </div>
           </div>
-
-          {/* Loading overlay */}
           <div 
             id="loading-overlay" 
             className="
