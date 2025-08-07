@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (page = 1) => {
-    const response = await fetch(`https://devcase.isiksoftyazilim.com/api/products?page=${page}`)
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products?page=${page}`)
     if (!response.ok) throw new Error('Ürünler alınamadı')
     return response.json()
   }
@@ -12,7 +12,7 @@ export const fetchProducts = createAsyncThunk(
 export const deleteProduct = createAsyncThunk(
   'products/deleteProduct',
   async (productId) => {
-    const response = await fetch(`https://devcase.isiksoftyazilim.com/api/products/${productId}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products/${productId}`, {
       method: 'DELETE'
     })
     if (!response.ok) throw new Error('Ürün silinemedi')
