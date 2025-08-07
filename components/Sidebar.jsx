@@ -50,7 +50,7 @@ const Sidebar = () => {
         isSidebarOpen ? 'w-64' : 'w-20'
       }`}
     >
-      <div className="h-full bg-background text-foreground p-4 flex flex-col border-r border-gray-200 dark:border-[#2f2f2f]">
+      <div className="h-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-4 flex flex-col border-r border-gray-200 dark:border-gray-700">
         {/* Logo & Toggle */}
         <div
           className={`flex ${
@@ -72,13 +72,15 @@ const Sidebar = () => {
               className="rounded-md"
             />
             {isSidebarOpen && (
-              <span className="ml-3 font-semibold text-lg">MasterPos</span>
+              <span className="ml-3 font-semibold text-lg dark:text-white">
+                MasterPos
+              </span>
             )}
           </div>
 
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className={`p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-[#2f2f2f] transition-all cursor-pointer ${
+            className={`p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all cursor-pointer ${
               !isSidebarOpen && 'mt-2'
             }`}
           >
@@ -98,12 +100,12 @@ const Sidebar = () => {
           <div className="relative">
             <Search
               size={16}
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500"
             />
             <input
               type="text"
               placeholder="Ara..."
-              className="w-full pl-9 pr-3 py-2 bg-gray-50 dark:bg-[#2a2a2a] border border-gray-200 dark:border-[#3a3a3a] rounded-md text-sm text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-[#4a4a4a]"
+              className="w-full pl-9 pr-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-md text-sm text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-gray-500"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -121,15 +123,15 @@ const Sidebar = () => {
                 <div
                   className={`flex items-center p-3 rounded-lg transition-all group cursor-pointer ${
                     isActive
-                      ? 'bg-gray-100 dark:bg-[#2f2f2f] text-foreground'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#2a2a2a] hover:text-gray-900 dark:hover:text-white'
+                      ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white'
                   }`}
                 >
                   <div
                     className={`p-2 rounded-md flex items-center justify-center transition-colors ${
                       isActive
-                        ? 'bg-gray-200 dark:bg-[#3a3a3a] text-gray-700 dark:text-white'
-                        : 'bg-gray-100 dark:bg-[#2a2a2a] text-gray-500 dark:text-gray-300 group-hover:bg-gray-200 dark:group-hover:bg-[#3a3a3a]'
+                        ? 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-white'
+                        : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 group-hover:bg-gray-200 dark:group-hover:bg-gray-600'
                     }`}
                   >
                     {IconComponent && <IconComponent size={18} />}
