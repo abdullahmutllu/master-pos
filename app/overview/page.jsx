@@ -1,6 +1,6 @@
 'use client'
 import Card from '@/components/Card'
-import ProductCard from '@/components/ProductCard' // Dikkat: "PrroductCard" yazım hatası düzeltildi
+import ProductCard from '@/components/ProductCard'
 import { DollarSign, ShoppingCart, Users, CreditCard, TrendingUp } from 'lucide-react'
 import React from 'react'
 
@@ -14,10 +14,12 @@ const OverviewPage = () => {
   ]
 
   return (
-    <div className='flex-1 overflow-auto relative z-10'>
-      <main className='max-w-7xl mx-auto py-4 px-4 lg:px-8'>
+    <div className='flex-1 overflow-auto relative z-10 '>
+      {/* Header ile tamamen aynı padding ve max-width değerleri */}
+      <main className='py-2 px-2 sm:px-6 lg:px-8'>
+        
         {/* Küçük Kartlar */}
-        <div className='grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 mb-8'>
+        <div className='grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 mb-2 '>
           {cardData.map((card, index) => (
             <Card 
               key={index}
@@ -28,10 +30,11 @@ const OverviewPage = () => {
           ))}
         </div>
         
-
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+        {/* ProductCard - Header ile aynı genişlik sınırları içinde */}
+        <div className='w-full'>
           <ProductCard />
         </div>
+        
       </main>
     </div>
   )

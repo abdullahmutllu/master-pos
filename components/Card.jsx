@@ -3,18 +3,40 @@ import React from 'react'
 
 const Card = ({ name, icon: Icon, value }) => {
   return (
-    <div className="bg-[#1e1e1e] rounded-lg p-4 shadow-sm border border-[#2f2f2f] hover:border-[#3f3f3f] transition-colors">
-      <div className="flex items-center justify-between">
+    <div className="
+
+      rounded-lg
+      p-3
+      shadow-sm
+      border border-gray-100 dark:hover:bg-[#2a2a2a]
+      hover:shadow-md
+      transition-all
+      duration-200
+      w-full
+      group
+      overflow-hidden
+      relative
+    ">
+      {/* Parlaklık efekti */}
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white/10 dark:to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      
+      <div className="flex items-center justify-between gap-2 relative z-10">
         <div>
-          <p className="text-sm font-medium text-gray-400 uppercase tracking-wider">{name}</p>
-          <p className="mt-2 text-2xl font-semibold text-white">{value || 'N/A'}</p>
+          <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            {name}
+          </p>
+          <p className="mt-1 text-lg font-semibold text-gray-800 dark:text-gray-100">
+            {value || 'N/A'}
+          </p>
         </div>
         {Icon && (
-          <div className="p-3 rounded-full bg-[#2a2a2a]">
-            <Icon className="h-6 w-6 text-gray-300" />
+          <div className="p-2 rounded-lg bg-gray-50 dark:bg-[#252525] group-hover:bg-gray-100 dark:group-hover:bg-[#303030] transition-colors">
+            <Icon className="h-4 w-4 text-gray-700 dark:text-gray-300" />
           </div>
         )}
       </div>
+      
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </div>
   )
 }

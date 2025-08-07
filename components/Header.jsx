@@ -7,18 +7,37 @@ import { Bell, Sun, Moon } from 'lucide-react'
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false)
 
-  // Sayfa yüklendiğinde localStorage'dan tema tercihini oku
+  // Sayfa yüklendiğinde tema kontrolü
   useEffect(() => {
-    const isDark = localStorage.getItem('darkMode') === 'true'
-    setDarkMode(isDark)
-    document.documentElement.classList.toggle('dark', isDark)
+    // localStorage'dan tema tercihini oku
+    const savedMode = localStorage.getItem('darkMode')
+    // Sistem tercihini kontrol et (eğer localStorage'da kayıt yoksa)
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    
+    // Eğer localStorage'da kayıt varsa onu kullan, yoksa sistem tercihini kullan
+    const initialMode = savedMode !== null ? savedMode === 'true' : systemPrefersDark
+    
+    setDarkMode(initialMode)
+    document.documentElement.classList.toggle('dark', initialMode)
+    
+    // Sistem teması değişikliklerini dinle
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const handleChange = (e) => {
+      if (localStorage.getItem('darkMode') === null) {
+        setDarkMode(e.matches)
+        document.documentElement.classList.toggle('dark', e.matches)
+      }
+    }
+    mediaQuery.addEventListener('change', handleChange)
+    
+    return () => mediaQuery.removeEventListener('change', handleChange)
   }, [])
 
   // Tema değiştirme fonksiyonu
   const toggleDarkMode = () => {
     const newMode = !darkMode
     setDarkMode(newMode)
-    localStorage.setItem('darkMode', newMode)
+    localStorage.setItem('darkMode', newMode.toString()) // toString ekledik
     document.documentElement.classList.toggle('dark', newMode)
   }
 
@@ -39,11 +58,12 @@ const Header = () => {
           <button 
             onClick={toggleDarkMode}
             className='p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#2f2f2f]'
+            aria-label={darkMode ? 'Light moda geç' : 'Dark moda geç'}
           >
             {darkMode ? (
               <Sun className='w-5 h-5 text-yellow-400' />
             ) : (
-              <Moon className='w-5 h-5 text-gray-600' />
+              <Moon className='w-5 h-5 text-gray-600 dark:text-gray-300' />
             )}
           </button>
           
