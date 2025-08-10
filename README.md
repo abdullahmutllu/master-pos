@@ -26,10 +26,11 @@ MasterPos, Next.js 15 ve React 19 ile geliştirilmiş, karanlık/aydınlık mod 
 - **Grafikler**: Recharts
 - **UI Bileşenleri**: Radix UI
 
-## Görev Görseli
+## Task Görseli
 
 ![Talep Edilen Task ](https://github.com/user-attachments/assets/fc1e1824-cb08-44cf-92f3-3152f58abf69)
 
 ## Benim Yaptığım Uygulama
 
-![Benim Uygulamam](https://github.com/your-username/your-repo/blob/main/path-to-your-image.png)
+![task](https://github.com/user-attachments/assets/dc399a8f-2d5b-44ed-ae4c-4e6750b564d0)
+
